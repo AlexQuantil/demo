@@ -17,7 +17,7 @@ public class TestService {
     DbService dbService;
 
     public void test(){
-        // Start 3 threads at the same time run the testLock() method.
+        // Start 2 threads at the same time run the testLock() method.
         for (int i = 0; i < 2; i++) {
             int threadId = i;
             executorService.submit(() -> {

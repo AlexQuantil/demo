@@ -20,8 +20,6 @@ public class DbService {
 //    public void testLock(int threadId) {
 //        System.out.println(String.format("Thread %s outside transaction.", threadId));
 //        dbService2.insertLock(threadId);
-//        // Do some MongoDB jobs takes 1-2 seconds
-//        Thread.sleep(2000L);
 //        dbRepo.findByIdAndType(1, "test1");
 //    }
 
@@ -32,10 +30,8 @@ public class DbService {
     @SneakyThrows
     @Transactional
     public void testLock2(int threadId) {
-        System.out.println(String.format("Thread %s outside transaction.", threadId));
+        System.out.println(String.format("Thread %s transaction started.", threadId));
         dbRepo.insertIgnoreResourceLock(1, "test1");
-        // Do some MongoDB jobs takes 1-2 seconds
-        Thread.sleep(2000L);
         dbRepo.findByIdAndType(1, "test1");
     }
 
